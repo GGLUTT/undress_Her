@@ -1,0 +1,111 @@
+.offer-page {
+  min-height: 100vh;
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+}
+
+.offer-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.offer-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.offer-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.plan-card {
+  background: var(--secondary-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--neon-pink);
+  box-shadow: 0 20px 40px rgba(255, 0, 128, 0.2);
+}
+
+.plan-card.popular {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 30px rgba(255, 0, 128, 0.3);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  color: var(--neon-pink);
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+}
+
+.plan-features {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.plan-features li {
+  padding: 10px 0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
+
+.plan-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .offer-title {
+    font-size: 2rem;
+  }
+  
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+}
