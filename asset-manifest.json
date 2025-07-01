@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/undress_Her/static/css/main.0052b6bd.css",
-    "main.js": "/undress_Her/static/js/main.45272cab.js",
+    "main.css": "/undress_Her/static/css/main.4580286e.css",
+    "main.js": "/undress_Her/static/js/main.b5d8e0b0.js",
     "static/js/453.6d5c60ef.chunk.js": "/undress_Her/static/js/453.6d5c60ef.chunk.js",
-    "static/media/black-undressed.jpg": "/undress_Her/static/media/black-undressed.c6156cc284ddff407f1b.jpg",
-    "static/media/garden-undressed.jpg": "/undress_Her/static/media/garden-undressed.61c9e793cb4fe23e2120.jpg",
-    "static/media/img-undressed.jpg": "/undress_Her/static/media/img-undressed.37e5b80213227aa74b30.jpg",
-    "static/media/asian-1-undressed.jpg": "/undress_Her/static/media/asian-1-undressed.cf64f41a5c1bac75a32a.jpg",
-    "static/media/gym-undressed.jpg": "/undress_Her/static/media/gym-undressed.60e8c732184aac3ec4e4.jpg",
-    "static/media/asian-2-undressed.jpg": "/undress_Her/static/media/asian-2-undressed.c4271958de96fe290e62.jpg",
-    "static/media/office-undressed.jpg": "/undress_Her/static/media/office-undressed.42d10f5026bddedf123a.jpg",
+    "static/media/black-undressed.jpg": "/undress_Her/static/media/black-undressed.d31ac110ea932e8723d0.jpg",
+    "static/media/garden-undressed.jpg": "/undress_Her/static/media/garden-undressed.20398126124f6733b123.jpg",
+    "static/media/img-undressed.jpg": "/undress_Her/static/media/img-undressed.91ac9f2c9b844f7d0b49.jpg",
+    "static/media/asian-1-undressed.jpg": "/undress_Her/static/media/asian-1-undressed.ae31e69c210e45fb4257.jpg",
+    "static/media/gym-undressed.jpg": "/undress_Her/static/media/gym-undressed.fb4220ba2dc870087f8a.jpg",
+    "static/media/asian-2-undressed.jpg": "/undress_Her/static/media/asian-2-undressed.6cd15f020acc01f059e1.jpg",
+    "static/media/office-undressed.jpg": "/undress_Her/static/media/office-undressed.25fd19980f83508c6b97.jpg",
     "static/media/black-dressed.jpg": "/undress_Her/static/media/black-dressed.803af9d3ab4f6f4deff7.jpg",
     "static/media/img-dressed.jpg": "/undress_Her/static/media/img-dressed.40739d2f8bb0d50e1a25.jpg",
     "static/media/donut.png": "/undress_Her/static/media/donut.f5ce422e723323d1520f.png",
@@ -28,16 +28,16 @@
     "static/media/telegram.png": "/undress_Her/static/media/telegram.b76beae5b2e76931bec1.png",
     "static/media/instagram.png": "/undress_Her/static/media/instagram.75e0546a6b5abe4c0506.png",
     "static/media/office-dressed.jpg": "/undress_Her/static/media/office-dressed.4db0016d9d0995c934ed.jpg",
-    "static/media/redit.png": "/undress_Her/static/media/redit.16181150e8795696c52b.png",
+    "static/media/facebook.png": "/undress_Her/static/media/facebook.795fce8e464693d7346d.png",
     "static/media/logo.png": "/undress_Her/static/media/logo.91c9fd996470e7d32995.png",
     "static/media/twitter.png": "/undress_Her/static/media/twitter.894988327f8d68209e91.png",
     "index.html": "/undress_Her/index.html",
-    "main.0052b6bd.css.map": "/undress_Her/static/css/main.0052b6bd.css.map",
-    "main.45272cab.js.map": "/undress_Her/static/js/main.45272cab.js.map",
+    "main.4580286e.css.map": "/undress_Her/static/css/main.4580286e.css.map",
+    "main.b5d8e0b0.js.map": "/undress_Her/static/js/main.b5d8e0b0.js.map",
     "453.6d5c60ef.chunk.js.map": "/undress_Her/static/js/453.6d5c60ef.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0052b6bd.css",
-    "static/js/main.45272cab.js"
+    "static/css/main.4580286e.css",
+    "static/js/main.b5d8e0b0.js"
   ]
 }
