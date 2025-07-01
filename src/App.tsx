@@ -109,4 +109,12 @@ function AppContent() {
   );
 }
 
+function App() {
+  return (
+    <Router basename="/undress_Her">
+      <AppContent />
+    </Router>
+  );
+}
+
 export default App;
