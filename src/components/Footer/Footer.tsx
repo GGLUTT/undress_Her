@@ -15,7 +15,7 @@ import instagramIcon from '../../img/icons/instagram.png';
 
 interface SiteFooterProps {
   language: 'ru' | 'en';
-  setCurrentPage: (page: string) => void;
+  setCurrentPage: (page: 'home' | 'offer' | 'article' | 'models') => void;
   onTermsClick: () => void;
 }
 
@@ -143,7 +143,7 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
                 <li key={item.key} className="site-footer__nav-item">
                   <button 
                     className="site-footer__nav-button"
-                    onClick={() => setCurrentPage(item.key as any)}
+                    onClick={() => setCurrentPage(item.key as 'home' | 'offer' | 'article' | 'models')}
                   >
                     {item.label}
                   </button>

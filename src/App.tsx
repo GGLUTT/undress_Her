@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -11,10 +12,23 @@ import ModelPage from './components/pages/ModelPage/ModelPage';
 type PageType = 'home' | 'offer' | 'article' | 'models';
 type LanguageType = 'ru' | 'en';
 
-function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
+function AppContent() {
   const [language, setLanguage] = useState<LanguageType>('ru');
   const [showTerms, setShowTerms] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Визначаємо поточну сторінку на основі URL
+  const getCurrentPage = (): PageType => {
+    const path = location.pathname;
+    if (path === '/home' || path === '/') return 'home';
+    if (path === '/offer') return 'offer';
+    if (path === '/articles') return 'article';
+    if (path === '/models') return 'models';
+    return 'home';
+  };
+
+  const currentPage = getCurrentPage();
 
   // Перевірка на вік юзера
   useEffect(() => {
@@ -24,8 +38,28 @@ function App() {
     }
   }, []);
 
-  const handlePageChange = (page: string) => {
-    setCurrentPage(page as PageType);
+  // Редірект з / на /home
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/home', { replace: true });
+    }
+  }, [location.pathname, navigate]);
+
+  const handlePageChange = (page: PageType) => {
+    switch (page) {
+      case 'home':
+        navigate('/home');
+        break;
+      case 'offer':
+        navigate('/offer');
+        break;
+      case 'article':
+        navigate('/articles');
+        break;
+      case 'models':
+        navigate('/models');
+        break;
+    }
   };
 
   const handleTermsAccept = () => {
@@ -38,33 +72,24 @@ function App() {
     alert('Для використання сайту необхідно прийняти умови використання.');
   };
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <HomePage language={language} />;
-      case 'offer':
-        return <OfferPage language={language} />;
-      case 'article':
-        return <ArticlePage language={language} />;
-      case 'models':
-        return <ModelPage language={language} />;
-      default:
-        return <HomePage language={language} />;
-    }
-  };
-
   return (
     <div className="App">
       <Header 
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        setCurrentPage={handlePageChange}
         language={language}
         setLanguage={setLanguage}
         onTermsClick={() => setShowTerms(true)}
       />
       
       <main className="main-content">
-        {renderPage()}
+        <Routes>
+          <Route path="/" element={<HomePage language={language} />} />
+          <Route path="/home" element={<HomePage language={language} />} />
+          <Route path="/offer" element={<OfferPage language={language} />} />
+          <Route path="/articles" element={<ArticlePage language={language} />} />
+          <Route path="/models" element={<ModelPage language={language} />} />
+        </Routes>
       </main>
       
       <Footer 
@@ -82,6 +107,14 @@ function App() {
         />
       )}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

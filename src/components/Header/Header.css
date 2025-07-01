@@ -394,6 +394,7 @@
   padding: 0;
   z-index: 1001;
   position: relative;
+  left: 90%;
 }
 
 .burger-menu span {

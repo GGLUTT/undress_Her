@@ -25,11 +25,9 @@ const Header: React.FC<HeaderProps> = ({
     ru: {
       menu: [
         { key: 'home', label: 'Главная' },
-        // { key: 'offer', label: 'Предложения' },
         { key: 'article', label: 'Статьи' },
         { key: 'models', label: 'Модели' }
       ],
-      // terms: 'Условия использования'
     },
     en: {
       menu: [
@@ -63,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({
     } else {
       setCurrentPage(itemKey as any);
     }
-    setIsMobileMenuOpen(false); // Закриваємо меню після вибору
+    setIsMobileMenuOpen(false);
   };
 
   const toggleMobileMenu = () => {
@@ -78,7 +76,6 @@ const Header: React.FC<HeaderProps> = ({
             <img src={logo} alt="Undress Her" className="logo-image" />
           </div>
           
-          {/* Бургер кнопка для мобільних */}
           <button 
             className={`burger-menu ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={toggleMobileMenu}
@@ -89,7 +86,6 @@ const Header: React.FC<HeaderProps> = ({
             <span></span>
           </button>
           
-          {/* Десктопна навігація */}
           <nav className="navigation desktop-nav">
             <ul className="nav-menu">
               {t.menu.map((item) => (
@@ -105,7 +101,6 @@ const Header: React.FC<HeaderProps> = ({
             </ul>
           </nav>
 
-          {/* Мобільна навігація */}
           <nav className={`mobile-navigation ${isMobileMenuOpen ? 'open' : ''}`}>
             <ul className="mobile-nav-menu">
               {t.menu.map((item) => (
@@ -122,24 +117,7 @@ const Header: React.FC<HeaderProps> = ({
           </nav>
 
           <div className="header-controls">
-            {/* <button className="terms-link" onClick={onTermsClick}> */}
-              {/* {t.terms} */}
-            {/* </button> */}
-            
-            {/* <div className="language-switcher">
-              <button 
-                className={`lang-btn ${language === 'ru' ? 'active' : ''}`}
-                onClick={() => setLanguage('ru')}
-              >
-                RU
-              </button>
-              <button 
-                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
-                onClick={() => setLanguage('en')}
-              >
-                EN
-              </button>
-            </div> */}
+            {/* Закоментовані елементи можна розкоментувати за потреби */}
           </div>
         </div>
       </div>
