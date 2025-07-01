@@ -127,26 +127,29 @@
 
 .site-footer__nav-column {
   flex: 1;
-  min-width: 160px; 
+  min-width: 160px;
+  text-align: center; 
 }
 
 .site-footer__column-heading {
   color: #ffffff;
-  font-size: 1rem; 
+  font-size: 1rem;
   font-weight: 700;
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
   padding-bottom: 10px;
+  text-align: center; 
 }
 
 .site-footer__column-heading::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 35px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 35px;
   height: 2px;
   border-radius: 2px;
 }
@@ -155,10 +158,12 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: center; 
 }
 
 .site-footer__nav-item {
-  margin-bottom: 12px; 
+  margin-bottom: 12px;
+  text-align: center; 
 }
 
 .site-footer__nav-link,
@@ -168,19 +173,26 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 0.9rem; 
+  font-size: 0.9rem;
   font-weight: 400;
   transition: all 0.3s ease;
   padding: 0;
-  display: block;
-  line-height: 1.5; 
+  display: inline-block;
+  line-height: 1.5;
   position: relative;
+  text-align: center; 
+}
+
+
+.site-footer__nav-link::before,
+.site-footer__nav-button::before {
+  display: none; 
 }
 
 .site-footer__nav-link:hover,
 .site-footer__nav-button:hover {
   color: #00bfff;
-  transform: translateX(5px);
+  transform: none;
 }
 
 .site-footer__nav-link::before,
@@ -230,7 +242,7 @@
 .site-footer__legal-button {
   color: #8892b0;
   text-decoration: none;
-  font-size: 0.8rem; /* Уменьшено с 0.85rem */
+  font-size: 0.8rem; 
   font-weight: 400;
   transition: all 0.3s ease;
   background: none;
@@ -275,11 +287,11 @@
 /* Responsive Design */
 @media (max-width: 1200px) {
   .site-footer__container {
-    gap: 50px; /* Уменьшено с 60px */
+    gap: 50px; 
   }
   
   .site-footer__nav-sections {
-    gap: 40px; /* Уменьшено с 50px */
+    gap: 40px;
   }
 }
 
