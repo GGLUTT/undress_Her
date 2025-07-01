@@ -38,7 +38,7 @@ function AppContent() {
     }
   }, []);
 
-  // Редірект з / на /home (оновлено для HashRouter)
+  // Редірект з / на /home для HashRouter
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '') {
       navigate('/home', { replace: true });
