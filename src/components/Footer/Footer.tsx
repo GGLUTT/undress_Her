@@ -9,7 +9,7 @@ import twitterIcon from '../../img/icons/twitter.png';
 // @ts-ignore
 import discordIcon from '../../img/icons/discord.png';
 // @ts-ignore
-import redditIcon from '../../img/icons/redit.png';
+import facebookIcon from '../../img/icons/facebook.png';
 // @ts-ignore
 import instagramIcon from '../../img/icons/instagram.png';
 
@@ -28,7 +28,7 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
         heading: 'Навигация',
         menuItems: [
           { key: 'home', label: 'Главная' },
-          { key: 'offer', label: 'Предложения' },
+          // { key: 'offer', label: 'Предложения' },
           { key: 'article', label: 'Статьи' },
           { key: 'models', label: 'Модели' }
         ]
@@ -50,7 +50,7 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
           { name: 'Telegram', icon: telegramIcon },
           { name: 'Twitter', icon: twitterIcon },
           { name: 'Discord', icon: discordIcon },
-          { name: 'Reddit', icon: redditIcon },
+          { name: 'FaceBook', icon: facebookIcon },
           { name: 'Instagram', icon: instagramIcon }
         ]
       },
@@ -91,7 +91,7 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
           { name: 'Telegram', icon: telegramIcon },
           { name: 'Twitter', icon: twitterIcon },
           { name: 'Discord', icon: discordIcon },
-          { name: 'Reddit', icon: redditIcon },
+          { name: 'FaceBook', icon: facebookIcon },
           { name: 'Instagram', icon: instagramIcon }
         ]
       },
