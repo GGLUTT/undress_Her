@@ -11,7 +11,7 @@
     #0a0a0a 30%,
     #111111 70%, 
     #000000 100%);
-  padding: 140px 0 100px;
+  padding: 60px 0 40px; /* Еще более компактно */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -48,6 +48,7 @@
 
 .hero-content {
   position: relative;
+       padding: 20px;
   z-index: 3;
   animation: fadeInUp 1s ease-out;
 }
@@ -64,10 +65,10 @@
 }
 
 .hero-title {
-  font-size: 4.5rem;
+  font-size: 3.5rem; 
   font-weight: 900;
-  margin-bottom: 25px;
-  letter-spacing: 4px;
+  margin-bottom: 10px; 
+  letter-spacing: 3px;
   background: linear-gradient(45deg, #ffffff, #cccccc, #ffffff, #aaaaaa);
   background-size: 400% 400%;
   -webkit-background-clip: text;
@@ -95,7 +96,7 @@
 }
 
 .hero-subtitle {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #cccccc;
   margin-bottom: 25px;
   font-weight: 400;
@@ -104,7 +105,7 @@
 }
 
 .hero-description {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #999999;
   margin-bottom: 50px;
   max-width: 700px;
@@ -397,7 +398,6 @@
   padding: 100px 0;
 }
 
-/* Покращені анімації появи */
 .benefit-card {
   animation: slideInUp 0.6s ease-out;
   animation-fill-mode: both;

@@ -4,7 +4,6 @@ import './ScrollToTopButton.css';
 const ScrollToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Показувати кнопку коли користувач прокрутив вниз
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);
@@ -13,7 +12,6 @@ const ScrollToTopButton: React.FC = () => {
     }
   };
 
-  // Функція для скролу вгору
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

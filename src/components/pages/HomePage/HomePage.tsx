@@ -11,7 +11,7 @@ import ScrollToTopButton from '../../ScrollToTopButton/ScrollToTopButton';
 import imgDressed from '../../../img/models/img-dressed.jpg';
 // @ts-ignore
 import imgUndressed from '../../../img/models/img-undressed.jpg';
-import OfferPage from '../OfferPage/OfferPage';
+// import OfferPage from '../OfferPage/OfferPage';
 
 interface HomePageProps {
   language: 'ru' | 'en' ;
@@ -151,7 +151,7 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
       {/* Gallery Section */}
       <Gallery language={language} />
 
-      <OfferPage language={language} />
+      {/* <OfferPage language={language} /> */}
       
       <Security language={language} />
 

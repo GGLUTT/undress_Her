@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 
 // @ts-ignore
@@ -19,15 +19,17 @@ const Header: React.FC<HeaderProps> = ({
   setLanguage, 
   onTermsClick 
 }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const content = {
     ru: {
       menu: [
         { key: 'home', label: 'Главная' },
-        { key: 'offer', label: 'Предложения' },
+        // { key: 'offer', label: 'Предложения' },
         { key: 'article', label: 'Статьи' },
         { key: 'models', label: 'Модели' }
       ],
-      terms: 'Условия использования'
+      // terms: 'Условия использования'
     },
     en: {
       menu: [
@@ -44,10 +46,8 @@ const Header: React.FC<HeaderProps> = ({
 
   const handleMenuClick = (itemKey: string) => {
     if (itemKey === 'offer') {
-      // Якщо не на головній сторінці, спочатку переходимо на неї
       if (currentPage !== 'home') {
         setCurrentPage('home');
-        // Чекаємо поки сторінка завантажиться, потім прокручуємо
         setTimeout(() => {
           const offersSection = document.getElementById('offers');
           if (offersSection) {
@@ -55,7 +55,6 @@ const Header: React.FC<HeaderProps> = ({
           }
         }, 100);
       } else {
-        // Якщо вже на головній сторінці, просто прокручуємо
         const offersSection = document.getElementById('offers');
         if (offersSection) {
           offersSection.scrollIntoView({ behavior: 'smooth' });
@@ -64,6 +63,11 @@ const Header: React.FC<HeaderProps> = ({
     } else {
       setCurrentPage(itemKey as any);
     }
+    setIsMobileMenuOpen(false); // Закриваємо меню після вибору
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -74,7 +78,19 @@ const Header: React.FC<HeaderProps> = ({
             <img src={logo} alt="Undress Her" className="logo-image" />
           </div>
           
-          <nav className="navigation">
+          {/* Бургер кнопка для мобільних */}
+          <button 
+            className={`burger-menu ${isMobileMenuOpen ? 'active' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          
+          {/* Десктопна навігація */}
+          <nav className="navigation desktop-nav">
             <ul className="nav-menu">
               {t.menu.map((item) => (
                 <li key={item.key} className="nav-item">
@@ -89,12 +105,28 @@ const Header: React.FC<HeaderProps> = ({
             </ul>
           </nav>
 
+          {/* Мобільна навігація */}
+          <nav className={`mobile-navigation ${isMobileMenuOpen ? 'open' : ''}`}>
+            <ul className="mobile-nav-menu">
+              {t.menu.map((item) => (
+                <li key={item.key} className="mobile-nav-item">
+                  <button
+                    className={`mobile-nav-link ${currentPage === item.key ? 'active' : ''}`}
+                    onClick={() => handleMenuClick(item.key)}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
           <div className="header-controls">
-            <button className="terms-link" onClick={onTermsClick}>
-              {t.terms}
-            </button>
+            {/* <button className="terms-link" onClick={onTermsClick}> */}
+              {/* {t.terms} */}
+            {/* </button> */}
             
-            <div className="language-switcher">
+            {/* <div className="language-switcher">
               <button 
                 className={`lang-btn ${language === 'ru' ? 'active' : ''}`}
                 onClick={() => setLanguage('ru')}
@@ -107,7 +139,7 @@ const Header: React.FC<HeaderProps> = ({
               >
                 EN
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -222,7 +222,6 @@
   }
 }
 
-/* Покращена адаптивність */
 @media (max-width: 1200px) {
   .articles-grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -280,7 +279,6 @@
   }
 }
 
-/* Додаткові ефекти для кращого UX */
 .article-card {
   will-change: transform;
 }
@@ -289,4 +287,3 @@
   will-change: transform, box-shadow;
 }
 
-/* Покращений фокус для доступності */

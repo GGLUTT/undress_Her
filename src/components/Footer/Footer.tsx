@@ -2,6 +2,16 @@ import React from 'react';
 import './Footer.css';
 // @ts-ignore
 import logo from '../../img/main/logo.png';
+// @ts-ignore
+import telegramIcon from '../../img/icons/telegram.png';
+// @ts-ignore
+import twitterIcon from '../../img/icons/twitter.png';
+// @ts-ignore
+import discordIcon from '../../img/icons/discord.png';
+// @ts-ignore
+import redditIcon from '../../img/icons/redit.png';
+// @ts-ignore
+import instagramIcon from '../../img/icons/instagram.png';
 
 interface SiteFooterProps {
   language: 'ru' | 'en';
@@ -36,7 +46,13 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
         items: ['Новые', 'Популярные', 'Рекомендуемые', 'Избранные']
       },
       socialPlatforms: {
-        items: ['Telegram', 'Twitter', 'Discord', 'Reddit']
+        items: [
+          { name: 'Telegram', icon: telegramIcon },
+          { name: 'Twitter', icon: twitterIcon },
+          { name: 'Discord', icon: discordIcon },
+          { name: 'Reddit', icon: redditIcon },
+          { name: 'Instagram', icon: instagramIcon }
+        ]
       },
       legalInfo: {
         privacy: 'Политика конфиденциальности',
@@ -71,7 +87,13 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
         items: ['New', 'Popular', 'Recommended', 'Favorites']
       },
       socialPlatforms: {
-        items: ['Telegram', 'Twitter', 'Discord', 'Reddit']
+        items: [
+          { name: 'Telegram', icon: telegramIcon },
+          { name: 'Twitter', icon: twitterIcon },
+          { name: 'Discord', icon: discordIcon },
+          { name: 'Reddit', icon: redditIcon },
+          { name: 'Instagram', icon: instagramIcon }
+        ]
       },
       legalInfo: {
         privacy: 'Privacy Policy',
@@ -100,7 +122,11 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
             <div className="site-footer__social-grid">
               {currentContent.socialPlatforms.items.map((platform, index) => (
                 <a key={index} href="#" className="site-footer__social-item">
-                  {platform}
+                  <img 
+                    src={platform.icon} 
+                    alt={platform.name} 
+                    className="site-footer__social-icon"
+                  />
                 </a>
               ))}
             </div>

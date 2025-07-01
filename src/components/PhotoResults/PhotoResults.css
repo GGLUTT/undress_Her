@@ -57,9 +57,7 @@
 }
 
 .result-image-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(255, 20, 147, 0.3);
-  border: 2px solid var(--accent-color);
+  
 }
 
 .result-image {
@@ -97,7 +95,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, rgba(255, 20, 147, 0.2) 0%, transparent 70%);
   z-index: 3;
   pointer-events: none;
 }
