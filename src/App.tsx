@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -38,7 +38,6 @@ function AppContent() {
     }
   }, []);
 
-  // Редірект з / на /home для HashRouter
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '') {
       navigate('/home', { replace: true });
@@ -107,14 +106,6 @@ function AppContent() {
         />
       )}
     </div>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
   );
 }
 
