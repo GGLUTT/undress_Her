@@ -439,6 +439,15 @@
   }
 }
 
+/* Додати нові стилі для мобільного заголовка */
+.model-detail-title-mobile {
+  display: none;
+}
+
+.model-detail-title-desktop {
+  display: block;
+}
+
 /* Мобільна адаптація */
 @media (max-width: 768px) {
   .model-page {
@@ -477,6 +486,17 @@
     min-width: 600px;
   }
   
+  /* Показати мобільний заголовок та сховати десктопний */
+  .model-detail-title-mobile {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .model-detail-title-desktop {
+    display: none;
+  }
+  
   /* Детальний перегляд на планшетах */
   .model-detail {
     display: flex;
@@ -484,7 +504,7 @@
   }
   
   .back-btn-container {
-    order: 2;
+    order: 3;
     margin-top: 30px;
     margin-bottom: 0;
     text-align: left;

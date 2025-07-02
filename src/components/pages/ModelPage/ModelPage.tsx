@@ -247,13 +247,17 @@ const ModelPage: React.FC<ModelPageProps> = ({ language }) => {
         <div className="container">
           <div className="model-detail">
             <div className="model-detail-full-width">
+              <div className="model-detail-title-mobile">
+                <h1 className="model-detail-title">{selectedModel.title}</h1>
+              </div>
+              
               <div className="model-detail-main-content">
                 <div className="model-detail-image">
                   <img src={selectedModel.image} alt={selectedModel.title} />
                 </div>
                 
                 <div className="model-detail-info">
-                  <h1 className="model-detail-title">{selectedModel.title}</h1>
+                  <h1 className="model-detail-title model-detail-title-desktop">{selectedModel.title}</h1>
                   
                   <div className="model-detail-table">
                     <table>
