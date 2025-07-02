@@ -507,3 +507,96 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
+
+/* Company Partners Section */
+.site-footer__partners-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.site-footer__partners-heading {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.site-footer__partners-grid {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.site-footer__partner-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.site-footer__partner-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 20, 147, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.2);
+}
+
+.site-footer__partner-logo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0.9) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+.site-footer__partner-item:hover .site-footer__partner-logo {
+  filter: brightness(1.1) contrast(1.2);
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments for partners */
+@media (max-width: 768px) {
+  .site-footer__partners-grid {
+    gap: 15px;
+  }
+  
+  .site-footer__partner-logo {
+    height: 25px;
+  }
+  
+  .site-footer__partners-section {
+    margin: 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer__partners-grid {
+    gap: 10px;
+  }
+  
+  .site-footer__partner-logo {
+    height: 20px;
+  }
+  
+  .site-footer__partner-item {
+    padding: 6px 10px;
+  }
+  
+  .site-footer__partners-heading {
+    font-size: 0.8rem;
+  }
+}

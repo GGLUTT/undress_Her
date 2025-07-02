@@ -1,76 +1,35 @@
 .home-page {
   min-height: 100vh;
   overflow-x: hidden;
-  background: #000000;
+  /* background: #000000; */
 }
 
-/* Hero Section */
+/* Hero Section - оптимізована версія */
 .hero-section {
-  background: linear-gradient(135deg, 
-    #000000 0%, 
-    #0a0a0a 30%,
-    #111111 70%, 
-    #000000 100%);
-  padding: 45px 0 0px; 
+  background: transparent; /* Повністю прозорий фон */
+  padding: 60px 0 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-}
 
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 30% 20%, rgba(255, 0, 128, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
-  animation: backgroundPulse 8s ease-in-out infinite;
-}
-
-@keyframes backgroundPulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-.hero-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
-  opacity: 0.2;
 }
 
 .hero-content {
   position: relative;
-       padding: 20px;
+  padding: 0 20px;
   z-index: 3;
   animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: -20px; /* Додаємо негативний нижній margin */
 }
 
 .hero-title {
-  font-size: 2.8rem; 
+  font-size: 2.8rem;
   font-weight: 900;
-  top: 15px;
-  margin-bottom: 5px; 
+  margin-bottom: 15px; /* Збільшено відступ */
   letter-spacing: 3px;
-  background: linear-gradient(45deg, #ffffff, #cccccc, #ffffff, #aaaaaa);
+  /* background: linear-gradient(45deg, #ffffff, #cccccc, #ffffff, #aaaaaa); */
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -84,32 +43,20 @@
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
 }
 
-@keyframes gradientFlow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
 .hero-subtitle {
   font-size: 1.2rem;
   color: #cccccc;
-  margin-bottom: 5px; 
+  margin-bottom: 15px; /* Збільшено відступ */
   font-weight: 400;
   opacity: 0.9;
   animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 .hero-description {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #999999;
-  margin-bottom: 15px; 
-  max-width: 700px;
+  margin-bottom: 20px; /* Зменшуємо з 30px до 20px */
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.7;
@@ -118,8 +65,8 @@
 
 .hero-button {
   font-size: 1.1rem;
-  padding: 14px 35px;
-  margin-bottom: 0; 
+  padding: 16px 40px;
+  margin-bottom: -10px; /* Додаємо негативний нижній margin */
   position: relative;
   overflow: hidden;
   animation: fadeInUp 1s ease-out 0.6s both;
@@ -179,28 +126,15 @@
   transition: all 0.1s ease;
 }
 
-/* Slider Section */
-.slider-section {
-  padding: 100px 0;
+/* Slider Section - мінімальні відступи */
+.slider-section { 
+ padding: 0; /* Прибираємо всі paddings */
+  margin-top: -30px; /* Збільшуємо негативний margin з -20px до -30px */
   background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
   position: relative;
 }
 
-.slider-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 100px,
-    rgba(255, 255, 255, 0.01) 100px,
-    rgba(255, 255, 255, 0.01) 102px
-  );
-}
+
 
 /* Benefits Section */
 .benefits-section {
@@ -209,16 +143,7 @@
   overflow: hidden;
 }
 
-.benefits-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-}
+
 
 @keyframes rotate {
   from { transform: rotate(0deg); }
@@ -499,7 +424,7 @@
   }
   
   .hero-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .section-title {
@@ -544,70 +469,59 @@
 }
 
 /* Responsive Design */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 120px 0 80px;
-    min-height: 90vh;
+  .mobile-only {
+    display: block;
   }
   
-  .hero-title {
-    font-size: 3.5rem;
-    letter-spacing: 3px;
+  .desktop-only {
+    display: none;
   }
   
-  .hero-subtitle {
-    font-size: 1.4rem;
-  }
-  
-  .hero-description {
-    font-size: 1.1rem;
-  }
-  
-  .hero-button {
-    font-size: 1.2rem;
-    padding: 16px 40px;
-  }
-  
-  .section-title {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-  }
-  
-  .benefits-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .section {
-    padding: 80px 0;
+  .hero-slider {
+    margin-top: 20px;
+    height: 40vh;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 40px 0 0;
+  }
+  
   .hero-title {
-    font-size: 2.8rem;
-    letter-spacing: 2px;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
   }
   
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .hero-description {
+    font-size: 0.9rem;
+  }
+  
+  .hero-button {
     font-size: 1rem;
+    padding: 14px 30px;
   }
   
   .section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .benefit-card {
-    padding: 35px 20px;
+    padding: 30px 20px;
   }
   
   .gallery-grid {
@@ -658,4 +572,13 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* Спеціальний клас для тісного розташування */
+.tight-layout .hero-section {
+  padding-bottom: 10px;
+}
+
+.tight-layout .slider-section {
+  margin-top: -10px;
 }

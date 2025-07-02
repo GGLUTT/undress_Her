@@ -12,6 +12,12 @@ import discordIcon from '../../img/icons/discord.png';
 import facebookIcon from '../../img/icons/facebook.png';
 // @ts-ignore
 import instagramIcon from '../../img/icons/instagram.png';
+// @ts-ignore
+import avnLogo from '../../img/icons/avn-logo-company.png';
+// @ts-ignore
+import realTimeLogo from '../../img/icons/real-time-company.png';
+// @ts-ignore
+import xbizLogo from '../../img/icons/xbiz-logo-company.png';
 
 interface SiteFooterProps {
   language: 'ru' | 'en';
@@ -60,6 +66,7 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
         compliance: '2257 Соответствие',
         dmca: 'DMCA Соответствие'
       },
+      partnersHeading: 'Наши партнеры',
       copyrightText: '© 2024 Undress Her. Все права защищены.'
     },
     en: {
@@ -101,9 +108,16 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
         compliance: '2257 Compliance',
         dmca: 'DMCA Compliance'
       },
+      partnersHeading: 'Our Partners',
       copyrightText: '© 2024 Undress Her. All rights reserved.'
     }
   };
+
+  const companyLogos = [
+    { name: 'AVN', logo: avnLogo },
+    { name: 'Real Time', logo: realTimeLogo },
+    { name: 'XBIZ', logo: xbizLogo }
+  ];
 
   const currentContent = footerContent[language];
 
@@ -203,6 +217,23 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ language, setCurrentPage, onTer
             <a href="#" className="site-footer__legal-link">{currentContent.legalInfo.compliance}</a>
             <a href="#" className="site-footer__legal-link">{currentContent.legalInfo.dmca}</a>
           </div>
+          
+          {/* Company Partners Section */}
+          <div className="site-footer__partners-section">
+            <h5 className="site-footer__partners-heading">{currentContent.partnersHeading}</h5>
+            <div className="site-footer__partners-grid">
+              {companyLogos.map((company, index) => (
+                <div key={index} className="site-footer__partner-item">
+                  <img 
+                    src={company.logo} 
+                    alt={company.name} 
+                    className="site-footer__partner-logo"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          
           <div className="site-footer__copyright-wrapper">
             <p className="site-footer__copyright-text">{currentContent.copyrightText}</p>
           </div>

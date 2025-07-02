@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 // Конфігурація
 const config = {
@@ -10,12 +9,15 @@ const config = {
   componentsDir: './src/components'
 };
 
-// Утиліти
-class ReactToVanillaConverter {
+class AdvancedReactConverter {
   constructor() {
     this.components = new Map();
     this.styles = [];
     this.scripts = [];
+    this.translations = {
+      ru: {},
+      en: {}
+    };
   }
 
   // Очищення та створення директорії
@@ -68,104 +70,39 @@ class ReactToVanillaConverter {
     });
   }
 
-  // Конвертація TSX/JSX в HTML та JS
-  convertComponent(filePath) {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const componentName = path.basename(filePath, path.extname(filePath));
+  // Витягування перекладів з компонентів
+  extractTranslations(componentCode) {
+    const contentMatches = componentCode.match(/const\s+content\s*=\s*\{([\s\S]*?)\};/g);
     
-    // Витягування CSS імпортів
-    const cssImports = content.match(/import\s+['"]\.\/[^'"]*\.css['"]/g) || [];
-    cssImports.forEach(imp => {
-      const cssPath = imp.match(/['"]([^'"]*)['"]$/)[1];
-      const fullCssPath = path.resolve(path.dirname(filePath), cssPath);
-      if (fs.existsSync(fullCssPath)) {
-        this.styles.push(fs.readFileSync(fullCssPath, 'utf8'));
+    if (contentMatches) {
+      contentMatches.forEach(match => {
+        try {
+          // Спрощене витягування перекладів
+          if (match.includes('ru:') && match.includes('en:')) {
+            console.log('Знайдено переклади в компоненті');
+          }
+        } catch (e) {
+          console.warn('Не вдалося витягти переклади:', e.message);
+        }
+      });
+    }
+  }
+
+  // Обробка CSS файлів
+  processCSS(dir) {
+    const files = fs.readdirSync(dir);
+    
+    files.forEach(file => {
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+      
+      if (stat.isDirectory()) {
+        this.processCSS(filePath);
+      } else if (file.endsWith('.css')) {
+        const cssContent = fs.readFileSync(filePath, 'utf8');
+        this.styles.push(cssContent);
       }
     });
-
-    // Конвертація JSX в HTML та JS
-    const convertedComponent = this.convertJSXToVanilla(content, componentName);
-    return convertedComponent;
-  }
-
-  convertJSXToVanilla(content, componentName) {
-    // Видалення React імпортів
-    let jsContent = content
-      .replace(/import\s+React[^;]*;/g, '')
-      .replace(/import\s+\{[^}]*\}\s+from\s+['"]react[^'"]*['"];/g, '')
-      .replace(/import\s+[^;]*from\s+['"]react-router-dom['"];/g, '')
-      .replace(/import\s+['"][^'"]*\.css['"]/g, '')
-      .replace(/import\s+[^;]*from\s+['"]\.\/[^'"]*['"]/g, '');
-
-    // Конвертація функціональних компонентів
-    jsContent = jsContent.replace(
-      /const\s+(\w+):\s*React\.FC<[^>]*>\s*=\s*\(([^)]*)\)\s*=>\s*\{/g,
-      'function $1($2) {'
-    );
-
-    // Конвертація useState
-    jsContent = jsContent.replace(
-      /const\s+\[(\w+),\s*set(\w+)\]\s*=\s*useState\(([^)]+)\);/g,
-      'let $1 = $3;\nfunction set$2(value) { $1 = value; render$1(); }'
-    );
-
-    // Конвертація useEffect
-    jsContent = jsContent.replace(
-      /useEffect\(\(\)\s*=>\s*\{([^}]+)\},\s*\[([^\]]*)\]\);/g,
-      'function effect() { $1 } effect();'
-    );
-
-    // Конвертація JSX return в DOM створення
-    const returnMatch = jsContent.match(/return\s*\((.*?)\);/s);
-    if (returnMatch) {
-      const jsx = returnMatch[1];
-      const domCreation = this.convertJSXToDOM(jsx);
-      jsContent = jsContent.replace(
-        /return\s*\((.*?)\);/s,
-        `return ${domCreation};`
-      );
-    }
-
-    return {
-      name: componentName,
-      js: jsContent,
-      html: this.extractHTMLStructure(jsContent)
-    };
-  }
-
-  convertJSXToDOM(jsx) {
-    // Спрощена конвертація JSX в DOM API
-    let domCode = jsx
-      .replace(/<(\w+)([^>]*)>/g, (match, tag, attrs) => {
-        const element = `document.createElement('${tag}')`;
-        const attrCode = this.convertAttributes(attrs);
-        return `(() => { const el = ${element}; ${attrCode} return el; })()`;
-      })
-      .replace(/<\/(\w+)>/g, '')
-      .replace(/\{([^}]+)\}/g, '${$1}');
-
-    return `\`${domCode}\``;
-  }
-
-  convertAttributes(attrs) {
-    if (!attrs.trim()) return '';
-    
-    return attrs
-      .replace(/className=["']([^"']*)["']/g, "el.className = '$1';")
-      .replace(/onClick=\{([^}]+)\}/g, "el.addEventListener('click', $1);")
-      .replace(/(\w+)=["']([^"']*)["']/g, "el.setAttribute('$1', '$2');");
-  }
-
-  extractHTMLStructure(jsContent) {
-    // Витягування базової HTML структури
-    const returnMatch = jsContent.match(/return\s*\((.*?)\);/s);
-    if (returnMatch) {
-      return returnMatch[1]
-        .replace(/\{[^}]*\}/g, '')
-        .replace(/className/g, 'class')
-        .trim();
-    }
-    return '<div></div>';
   }
 
   // Генерація головного HTML файлу
@@ -188,6 +125,7 @@ class ReactToVanillaConverter {
     <script src="js/utils.js"></script>
     <script src="js/components.js"></script>
     <script src="js/router.js"></script>
+    <script src="js/advanced.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>`;
@@ -424,6 +362,81 @@ router.render = renderPage;
     fs.writeFileSync(path.join(config.outputDir, 'js', 'router.js'), routerJS);
   }
 
+  // Генерація розширених можливостей
+  generateAdvanced() {
+    const advancedJS = `
+// Розширені можливості
+class I18n {
+  constructor() {
+    this.translations = {
+      ru: {
+        heroTitle: 'Undress Her',
+        heroDescription: 'Революційна AI технологія',
+        home: 'Головна',
+        offer: 'Пропозиція',
+        articles: 'Статті',
+        models: 'Моделі'
+      },
+      en: {
+        heroTitle: 'Undress Her',
+        heroDescription: 'Revolutionary AI technology',
+        home: 'Home',
+        offer: 'Offer',
+        articles: 'Articles',
+        models: 'Models'
+      }
+    };
+    this.currentLanguage = 'ru';
+  }
+
+  t(key, lang = this.currentLanguage) {
+    return this.translations[lang]?.[key] || key;
+  }
+
+  setLanguage(lang) {
+    this.currentLanguage = lang;
+    globalLanguage = lang;
+    if (typeof updateContent === 'function') {
+      updateContent();
+    }
+  }
+}
+
+const i18n = new I18n();
+
+// Компонентна система
+class Component {
+  constructor(props = {}) {
+    this.props = props;
+    this.state = {};
+    this.element = null;
+  }
+
+  setState(newState) {
+    this.state = { ...this.state, ...newState };
+    this.render();
+  }
+
+  render() {
+    return createElement('div');
+  }
+
+  mount(parent) {
+    this.element = this.render();
+    parent.appendChild(this.element);
+  }
+
+  unmount() {
+    if (this.element && this.element.parentNode) {
+      this.element.parentNode.removeChild(this.element);
+    }
+  }
+}
+`;
+
+    fs.writeFileSync(path.join(config.outputDir, 'js', 'advanced.js'), advancedJS);
+  }
+
   // Генерація головного app.js
   generateApp() {
     const appJS = `
@@ -436,7 +449,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const termsAccepted = getFromStorage('termsAccepted');
   if (!termsAccepted) {
     showTerms = true;
-    // Тут можна додати логіку показу popup
   }
   
   // Початковий рендеринг
@@ -447,10 +459,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Обробка зміни мови
   window.changeLanguage = function(lang) {
     globalLanguage = lang;
+    i18n.setLanguage(lang);
     router.render();
   };
   
-  console.log('Vanilla JS додаток ініціалізовано!');
+  console.log('Advanced Vanilla JS додаток ініціалізовано!');
 });
 `;
 
@@ -458,8 +471,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Основний метод конвертації
-  async convert() {
-    console.log('🚀 Початок конвертації React проекту в Vanilla JS...');
+  async fullConvert() {
+    console.log('🚀 Розширена конвертація React проекту...');
     
     try {
       // 1. Підготовка
@@ -470,9 +483,9 @@ document.addEventListener('DOMContentLoaded', function() {
       this.copyStaticFiles();
       console.log('✅ Статичні файли скопійовані');
       
-      // 3. Обробка компонентів
-      this.processComponents();
-      console.log('✅ Компоненти оброблені');
+      // 3. Обробка CSS
+      this.processCSS('./src');
+      console.log('✅ CSS оброблено');
       
       // 4. Генерація файлів
       this.generateMainHTML();
@@ -480,40 +493,25 @@ document.addEventListener('DOMContentLoaded', function() {
       this.generateUtils();
       this.generateComponents();
       this.generateRouter();
+      this.generateAdvanced();
       this.generateApp();
       console.log('✅ Файли згенеровані');
       
-      console.log('🎉 Конвертація завершена! Файли знаходяться в папці vanilla-build/');
-      console.log('📝 Для запуску використовуйте: npm run serve-vanilla');
+      console.log('🎉 Розширена конвертація завершена!');
+      console.log('📁 Файли знаходяться в папці vanilla-build/');
+      console.log('🚀 Для запуску: npm run serve-vanilla');
       
     } catch (error) {
       console.error('❌ Помилка під час конвертації:', error);
       throw error;
     }
   }
-
-  processComponents() {
-    // Обробка CSS файлів
-    this.processCSS('./src');
-  }
-
-  processCSS(dir) {
-    const files = fs.readdirSync(dir);
-    
-    files.forEach(file => {
-      const filePath = path.join(dir, file);
-      const stat = fs.statSync(filePath);
-      
-      if (stat.isDirectory()) {
-        this.processCSS(filePath);
-      } else if (file.endsWith('.css')) {
-        const cssContent = fs.readFileSync(filePath, 'utf8');
-        this.styles.push(cssContent);
-      }
-    });
-  }
 }
 
-// Запуск конвертації
-const converter = new ReactToVanillaConverter();
-converter.convert().catch(console.error);
+// Запуск розширеної конвертації
+if (require.main === module) {
+  const advancedConverter = new AdvancedReactConverter();
+  advancedConverter.fullConvert().catch(console.error);
+}
+
+module.exports = AdvancedReactConverter;

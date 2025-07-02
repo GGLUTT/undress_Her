@@ -126,11 +126,19 @@ const HomePage: React.FC<HomePageProps> = ({ language }) => {
             <p className="hero-description">{t.heroDescription}</p>
             <button className="neon-button hero-button">{t.tryButton}</button>
           </div>
+          
+          {/* Slider для мобільних в hero-section */}
+          <div className="hero-slider mobile-only">
+            <BeforeAfterSlider 
+              beforeImage={imgDressed}
+              afterImage={imgUndressed}
+            />
+          </div>
         </div>
       </section>
 
-      {/* Before/After Slider */}
-      <section className="slider-section">
+      {/* Before/After Slider для десктопу */}
+      <section className="slider-section desktop-only">
         <div className="container">
           <BeforeAfterSlider 
             beforeImage={imgDressed}
