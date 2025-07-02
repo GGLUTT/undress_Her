@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/undress_Her/static/css/main.21e5db23.css",
+    "main.css": "/undress_Her/static/css/main.8fe7fa3f.css",
     "main.js": "/undress_Her/static/js/main.ce1cfa2f.js",
     "static/js/453.6d5c60ef.chunk.js": "/undress_Her/static/js/453.6d5c60ef.chunk.js",
     "static/media/black-undressed.jpg": "/undress_Her/static/media/black-undressed.d31ac110ea932e8723d0.jpg",
@@ -32,12 +32,12 @@
     "static/media/logo.png": "/undress_Her/static/media/logo.91c9fd996470e7d32995.png",
     "static/media/twitter.png": "/undress_Her/static/media/twitter.894988327f8d68209e91.png",
     "index.html": "/undress_Her/index.html",
-    "main.21e5db23.css.map": "/undress_Her/static/css/main.21e5db23.css.map",
+    "main.8fe7fa3f.css.map": "/undress_Her/static/css/main.8fe7fa3f.css.map",
     "main.ce1cfa2f.js.map": "/undress_Her/static/js/main.ce1cfa2f.js.map",
     "453.6d5c60ef.chunk.js.map": "/undress_Her/static/js/453.6d5c60ef.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.21e5db23.css",
+    "static/css/main.8fe7fa3f.css",
     "static/js/main.ce1cfa2f.js"
   ]
 }
