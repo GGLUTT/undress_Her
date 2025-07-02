@@ -22,16 +22,23 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-vanilla": "node convert.js",
+    "serve-vanilla": "cd vanilla-build && python -m http.server 8000",
+    "convert-and-serve": "npm run build-vanilla && npm run serve-vanilla",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "postbuild": "react-snap"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "reactSnap": {
+    "inlineCss": true
   },
   "browserslist": {
     "production": [
@@ -46,6 +53,13 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.7",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "gh-pages": "^6.3.0",
+    "react-snap": "^1.23.0",
+    "rimraf": "^6.0.1"
   }
 }

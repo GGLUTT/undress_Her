@@ -1,0 +1,293 @@
+.security-reliability-section {
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+  padding: 80px 0; /* Уменьшено с 120px */
+  position: relative;
+  overflow: hidden;
+}
+
+.security-reliability-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 0, 128, 0.02) 0%, transparent 50%);
+  animation: securityPulse 10s ease-in-out infinite;
+}
+
+@keyframes securityPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.security-reliability-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px; /* Уменьшено с 80px */
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.security-reliability-text-content {
+  animation: fadeInLeft 1s ease-out;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.security-reliability-title {
+  font-size: 2.8rem; /* Уменьшено с 3.2rem */
+  font-weight: 800;
+  margin-bottom: 20px; /* Уменьшено с 30px */
+  letter-spacing: 1.5px; /* Уменьшено с 2px */
+  background: linear-gradient(45deg, #ffffff, #c00060, #ffffff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.security-reliability-subtitle {
+  font-size: 1.2rem; /* Уменьшено с 1.3rem */
+  color: #cccccc;
+  margin-bottom: 20px; /* Уменьшено с 25px */
+  line-height: 1.5; /* Уменьшено с 1.6 */
+  font-weight: 500;
+}
+
+.security-reliability-description {
+  font-size: 1rem; /* Уменьшено с 1.1rem */
+  color: #aaaaaa;
+  margin-bottom: 15px; /* Уменьшено с 20px */
+  line-height: 1.6; /* Уменьшено с 1.7 */
+}
+
+.security-reliability-additional {
+  font-size: 0.95rem; /* Уменьшено с 1rem */
+  color: #999999;
+  margin-bottom: 30px; /* Уменьшено с 40px */
+  line-height: 1.6; /* Уменьшено с 1.8 */
+}
+
+.security-reliability-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px; /* Уменьшено с 20px */
+}
+
+.security-reliability-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Уменьшено с 15px */
+  padding: 12px 16px; /* Уменьшено с 15px 20px */
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.02) 0%, 
+    rgba(255, 255, 255, 0.005) 100%);
+  border: 1px solid rgba(255, 0, 106, 0.1);
+  border-radius: 10px; /* Уменьшено с 12px */
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.security-reliability-feature:hover {
+  border-color: rgba(255, 0, 106, 0.3);
+  background: linear-gradient(135deg, 
+    rgba(255, 0, 128, 0.05) 0%, 
+    rgba(255, 0, 140, 0.02) 100%);
+  transform: translateY(-2px); /* Уменьшено с -3px */
+  box-shadow: 0 8px 20px rgba(255, 0, 98, 0.1); /* Уменьшено с 10px 25px */
+}
+
+.security-reliability-feature-icon {
+  width: 20px; /* Уменьшено с 24px */
+  height: 20px; /* Уменьшено с 24px */
+  filter: brightness(0) saturate(100%) invert(13%) sepia(93%) saturate(7151%) hue-rotate(318deg) brightness(96%) contrast(129%);
+}
+
+.security-reliability-feature span {
+  color: #cccccc;
+  font-size: 0.9rem; /* Уменьшено с 0.95rem */
+  font-weight: 500;
+}
+
+.security-reliability-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 1s ease-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.security-reliability-illustration {
+  position: relative;
+  width: 320px; /* Уменьшено с 400px */
+  height: 320px; /* Уменьшено с 400px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.security-reliability-laptop-icon {
+  width: 280px; /* Уменьшено с 350px */
+  height: 280px; /* Уменьшено с 350px */
+  animation: float 6s ease-in-out infinite;
+  z-index: 2;
+  position: relative;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); } /* Уменьшено с -20px */
+}
+
+.security-reliability-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.security-reliability-particle {
+  position: absolute;
+  width: 3px; /* Уменьшено с 4px */
+  height: 3px; /* Уменьшено с 4px */
+  background: linear-gradient(45deg, #00ffff, #ff0080);
+  border-radius: 50%;
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+.security-reliability-particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.security-reliability-particle:nth-child(2) {
+  top: 30%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.security-reliability-particle:nth-child(3) {
+  bottom: 30%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+.security-reliability-particle:nth-child(4) {
+  bottom: 20%;
+  right: 30%;
+  animation-delay: 6s;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-25px) scale(1.2); /* Уменьшено с -30px */
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50px) scale(0.8); /* Уменьшено с -60px */
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-25px) scale(1.1); /* Уменьшено с -30px */
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .security-reliability-content {
+    grid-template-columns: 1fr;
+    gap: 40px; /* Уменьшено с 60px */
+    text-align: center;
+  }
+  
+  .security-reliability-illustration {
+    width: 250px; /* Уменьшено с 300px */
+    height: 250px; /* Уменьшено с 300px */
+  }
+  
+  .security-reliability-laptop-icon {
+    width: 120px; /* Уменьшено с 150px */
+    height: 120px; /* Уменьшено с 150px */
+  }
+}
+
+@media (max-width: 768px) {
+  .security-reliability-section {
+    padding: 60px 0; /* Уменьшено с 80px */
+  }
+  
+  .security-reliability-title {
+    font-size: 2.2rem; /* Уменьшено с 2.5rem */
+  }
+  
+  .security-reliability-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .security-reliability-content {
+    gap: 30px; /* Уменьшено с 40px */
+  }
+}
+
+@media (max-width: 480px) {
+  .security-reliability-title {
+    font-size: 1.8rem; /* Уменьшено с 2rem */
+    letter-spacing: 1px;
+  }
+  
+  .security-reliability-subtitle {
+    font-size: 1rem; /* Уменьшено с 1.1rem */
+  }
+  
+  .security-reliability-description,
+  .security-reliability-additional {
+    font-size: 0.9rem; /* Уменьшено с 1rem */
+  }
+  
+  .security-reliability-illustration {
+    width: 200px; /* Уменьшено с 250px */
+    height: 200px; /* Уменьшено с 250px */
+  }
+  
+  .security-reliability-laptop-icon {
+    width: 100px; /* Уменьшено с 120px */
+    height: 100px; /* Уменьшено с 120px */
+  }
+}

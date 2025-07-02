@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UndressHer - AI Photo Editor</title>
+    
+    <!-- Підключення CSS -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./App.css">
+    
+    <!-- React та ReactDOM з CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-router-dom@6/dist/umd/react-router-dom.production.min.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        #root {
+            min-height: 100vh;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="loading">Завантаження...</div>
+    </div>
+    
+    <!-- Простий роутер для SPA -->
+    <script>
+        // Простий роутер
+        class SimpleRouter {
+            constructor() {
+                this.routes = {};
+                this.currentPath = window.location.pathname;
+                
+                window.addEventListener('popstate', () => {
+                    this.navigate(window.location.pathname);
+                });
+            }
+            
+            addRoute(path, component) {
+                this.routes[path] = component;
+            }
+            
+            navigate(path) {
+                this.currentPath = path;
+                if (this.routes[path]) {
+                    this.render();
+                } else {
+                    // Fallback до home
+                    this.navigate('/home');
+                }
+            }
+            
+            render() {
+                const root = document.getElementById('root');
+                const component = this.routes[this.currentPath];
+                if (component) {
+                    root.innerHTML = component();
+                }
+            }
+        }
+        
+        // Ініціалізація додатку
+        const router = new SimpleRouter();
+        
+        // Додавання маршрутів
+        router.addRoute('/home', () => `
+            <div class="app">
+                <header class="header">
+                    <h1>UndressHer</h1>
+                    <nav>
+                        <a href="#" onclick="router.navigate('/home')">Головна</a>
+                        <a href="#" onclick="router.navigate('/offer')">Пропозиції</a>
+                        <a href="#" onclick="router.navigate('/articles')">Статті</a>
+                        <a href="#" onclick="router.navigate('/models')">Моделі</a>
+                    </nav>
+                </header>
+                <main>
+                    <h2>Ласкаво просимо!</h2>
+                    <p>Це головна сторінка вашого додатку.</p>
+                </main>
+            </div>
+        `);
+        
+        router.addRoute('/offer', () => `
+            <div class="app">
+                <header class="header">
+                    <h1>UndressHer</h1>
+                    <nav>
+                        <a href="#" onclick="router.navigate('/home')">Головна</a>
+                        <a href="#" onclick="router.navigate('/offer')">Пропозиції</a>
+                        <a href="#" onclick="router.navigate('/articles')">Статті</a>
+                        <a href="#" onclick="router.navigate('/models')">Моделі</a>
+                    </nav>
+                </header>
+                <main>
+                    <h2>Наші пропозиції</h2>
+                    <p>Тут будуть ваші пропозиції.</p>
+                </main>
+            </div>
+        `);
+        
+        router.addRoute('/articles', () => `
+            <div class="app">
+                <header class="header">
+                    <h1>UndressHer</h1>
+                    <nav>
+                        <a href="#" onclick="router.navigate('/home')">Головна</a>
+                        <a href="#" onclick="router.navigate('/offer')">Пропозиції</a>
+                        <a href="#" onclick="router.navigate('/articles')">Статті</a>
+                        <a href="#" onclick="router.navigate('/models')">Моделі</a>
+                    </nav>
+                </header>
+                <main>
+                    <h2>Статті</h2>
+                    <p>Тут будуть ваші статті.</p>
+                </main>
+            </div>
+        `);
+        
+        router.addRoute('/models', () => `
+            <div class="app">
+                <header class="header">
+                    <h1>UndressHer</h1>
+                    <nav>
+                        <a href="#" onclick="router.navigate('/home')">Головна</a>
+                        <a href="#" onclick="router.navigate('/offer')">Пропозиції</a>
+                        <a href="#" onclick="router.navigate('/articles')">Статті</a>
+                        <a href="#" onclick="router.navigate('/models')">Моделі</a>
+                    </nav>
+                </header>
+                <main>
+                    <h2>Моделі</h2>
+                    <p>Тут будуть ваші моделі.</p>
+                </main>
+            </div>
+        `);
+        
+        // Запуск додатку
+        window.addEventListener('DOMContentLoaded', () => {
+            const path = window.location.pathname;
+            if (path === '/' || path === '') {
+                router.navigate('/home');
+            } else {
+                router.navigate(path);
+            }
+        });
+    </script>
+</body>
+</html>

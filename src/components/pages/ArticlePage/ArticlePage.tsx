@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ArticlePage.css';
 
 interface ArticlePageProps {
@@ -6,6 +7,8 @@ interface ArticlePageProps {
 }
 
 const ArticlePage: React.FC<ArticlePageProps> = ({ language }) => {
+  const navigate = useNavigate();
+
   const content = {
     ru: {
       title: 'СТАТЬИ И НОВОСТИ',
@@ -13,24 +16,28 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ language }) => {
       readMore: 'Читать далее',
       articles: [
         {
+          id: 'undress-her-technology',
           title: 'Как работает технология Undress Her',
           excerpt: 'Подробное объяснение алгоритмов машинного обучения, используемых в нашей платформе для обработки изображений.',
           date: '15 декабря 2024',
           readTime: '5 мин'
         },
         {
+          id: 'security-privacy',
           title: 'Безопасность и конфиденциальность',
           excerpt: 'Узнайте, как мы защищаем ваши данные и обеспечиваем полную анонимность при использовании сервиса.',
           date: '12 декабря 2024',
           readTime: '3 мин'
         },
         {
+          id: 'algorithm-update',
           title: 'Обновление алгоритмов v2.0',
           excerpt: 'Новые возможности и улучшения качества обработки изображений с использованием передовых технологий.',
           date: '10 декабря 2024',
           readTime: '4 мин'
         },
         {
+          id: 'ai-ethics',
           title: 'Этические аспекты ИИ',
           excerpt: 'Обсуждение ответственного использования технологий искусственного интеллекта в современном мире.',
           date: '8 декабря 2024',
@@ -44,24 +51,28 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ language }) => {
       readMore: 'Read More',
       articles: [
         {
+          id: 'undress-her-technology',
           title: 'How Undress Her Technology Works',
           excerpt: 'Detailed explanation of machine learning algorithms used in our platform for image processing.',
           date: 'December 15, 2024',
           readTime: '5 min'
         },
         {
+          id: 'security-privacy',
           title: 'Security and Privacy',
           excerpt: 'Learn how we protect your data and ensure complete anonymity when using our service.',
           date: 'December 12, 2024',
           readTime: '3 min'
         },
         {
+          id: 'algorithm-update',
           title: 'Algorithm Update v2.0',
           excerpt: 'New features and improvements in image processing quality using cutting-edge technologies.',
           date: 'December 10, 2024',
           readTime: '4 min'
         },
         {
+          id: 'ai-ethics',
           title: 'Ethical Aspects of AI',
           excerpt: 'Discussion of responsible use of artificial intelligence technologies in the modern world.',
           date: 'December 8, 2024',
@@ -72,6 +83,10 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ language }) => {
   };
 
   const t = content[language];
+
+  const handleReadMore = (articleId: string) => {
+    navigate(`/articles/${articleId}`);
+  };
 
   return (
     <div className="article-page">
@@ -90,7 +105,12 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ language }) => {
               </div>
               <h3 className="article-card-title">{article.title}</h3>
               <p className="article-excerpt">{article.excerpt}</p>
-              <button className="article-read-btn">{t.readMore}</button>
+              <button 
+                className="article-read-btn"
+                onClick={() => handleReadMore(article.id)}
+              >
+                {t.readMore}
+              </button>
             </article>
           ))}
         </div>

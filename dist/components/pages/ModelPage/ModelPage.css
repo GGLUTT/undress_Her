@@ -291,44 +291,6 @@
   align-items: start;
 }
 
-.model-detail-full-width {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.model-detail-main-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: start;
-}
-
-.model-detail-description-full {
-  grid-column: 1 / -1;
-  background: var(--secondary-bg);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  margin-top: 30px;
-}
-
-.model-detail-description-full h3 {
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.model-detail-description-full p {
-  color: var(--text-secondary);
-  line-height: 1.8;
-  font-size: 1.2rem;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .model-detail-image {
   border-radius: 20px;
   overflow: hidden;
@@ -359,20 +321,16 @@
   overflow: hidden;
   margin-bottom: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  min-height: 300px; 
 }
 
 .model-detail-table table {
   width: 100%;
   border-collapse: collapse;
-  height: 100%; 
 }
 
 .model-detail-table td {
-  padding: 25px 30px; 
+  padding: 15px 20px;
   border-bottom: 1px solid var(--border-color);
-  font-size: 1.1rem; 
-  vertical-align: middle; 
 }
 
 .model-detail-table tr:last-child td {
@@ -383,29 +341,10 @@
   font-weight: bold;
   color: var(--text-primary);
   width: 40%;
-  font-size: 1.2rem; 
 }
 
 .table-value {
   color: var(--text-secondary);
-  font-size: 1.15rem; 
-  font-weight: 500;
-}
-
-.model-detail-info {
-  padding: 50px 0; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  min-height: 500px; 
-}
-
-.model-detail-title {
-  font-size: 2.8rem; 
-  font-weight: bold;
-  margin-bottom: 40px; 
-  color: var(--text-primary);
-  text-align: center;
 }
 
 .model-description {
@@ -468,19 +407,6 @@
   .model-detail-title {
     font-size: 2rem;
   }
-  
-  .model-detail-description-full {
-    margin-top: 20px;
-    padding: 20px;
-  }
-  
-  .model-detail-description-full h3 {
-    font-size: 1.3rem;
-  }
-  
-  .model-detail-description-full p {
-    font-size: 1.1rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -490,54 +416,5 @@
   
   .model-detail-title {
     font-size: 1.5rem;
-  }
-  
-  .model-detail-table {
-    min-height: 250px;
-  }
-  
-  .model-detail-table td {
-    padding: 20px 25px;
-    font-size: 1rem;
-  }
-  
-  .table-label {
-    font-size: 1.1rem;
-  }
-  
-  .table-value {
-    font-size: 1.05rem;
-  }
-  
-  .model-detail-info {
-    padding: 20px 0;
-    min-height: 400px;
-  }
-  
-  .model-detail-title {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .models-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .model-detail-title {
-    font-size: 1.5rem;
-  }
-  
-  .model-detail-table {
-    min-height: 200px;
-  }
-  
-  .model-detail-table td {
-    padding: 15px 20px;
-  }
-  
-  .model-detail-info {
-    min-height: 350px;
   }
 }

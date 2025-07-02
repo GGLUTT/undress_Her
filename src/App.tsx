@@ -7,6 +7,7 @@ import TermsPopup from './components/TermsPopup/TermsPopup';
 import HomePage from './components/pages/HomePage/HomePage';
 import OfferPage from './components/pages/OfferPage/OfferPage';
 import ArticlePage from './components/pages/ArticlePage/ArticlePage';
+import ArticleDetailPage from './components/pages/ArticlePage/ArticleDetailPage';
 import ModelPage from './components/pages/ModelPage/ModelPage';
 
 type PageType = 'home' | 'offer' | 'article' | 'models';
@@ -23,8 +24,8 @@ function AppContent() {
     const path = location.pathname;
     if (path === '/home' || path === '/') return 'home';
     if (path === '/offer') return 'offer';
-    if (path === '/articles') return 'article';
-    if (path === '/models') return 'models';
+    if (path === '/articles' || path.startsWith('/articles/')) return 'article';
+    if (path === '/models' || path.startsWith('/models/')) return 'models';
     return 'home';
   };
 
@@ -87,7 +88,9 @@ function AppContent() {
           <Route path="/home" element={<HomePage language={language} />} />
           <Route path="/offer" element={<OfferPage language={language} />} />
           <Route path="/articles" element={<ArticlePage language={language} />} />
+          <Route path="/articles/:articleId" element={<ArticleDetailPage language={language} />} />
           <Route path="/models" element={<ModelPage language={language} />} />
+          <Route path="/models/:modelSlug" element={<ModelPage language={language} />} />
         </Routes>
       </main>
       
