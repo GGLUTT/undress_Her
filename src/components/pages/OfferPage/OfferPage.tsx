@@ -1,124 +1,70 @@
 import React from 'react';
 import './OfferPage.css';
+import BeforeAfterSlider from '../../BeforeAfterSlider/BeforeAfterSlider';
+// @ts-ignore
+import imgDressed from '../../../img/models/img-dressed.jpg';
+// @ts-ignore
+import imgUndressed from '../../../img/models/img-undressed.jpg';
 
 interface OfferPageProps {
-  language: 'ru' | 'en' ;
+  language: 'ru' | 'en';
 }
 
 const OfferPage: React.FC<OfferPageProps> = ({ language }) => {
   const content = {
     ru: {
-      title: 'НАШИ ПРЕДЛОЖЕНИЯ',
-      subtitle: 'Выберите подходящий тариф',
-      plans: [
-        {
-          name: 'БАЗОВЫЙ',
-          price: 'БЕСПЛАТНО',
-          features: [
-            '3 изображения в день',
-            'Стандартное качество',
-            'Базовая обработка',
-            'Реклама'
-          ],
-          button: 'НАЧАТЬ'
-        },
-        {
-          name: 'ПРЕМИУМ',
-          price: '$9.99/мес',
-          features: [
-            'Безлимитные изображения',
-            'HD качество',
-            'Быстрая обработка',
-            'Без рекламы',
-            'Пrioритетная поддержка'
-          ],
-          button: 'ВЫБРАТЬ',
-          popular: true
-        },
-        {
-          name: 'ПРО',
-          price: '$19.99/мес',
-          features: [
-            'Все функции Премиум',
-            '4K качество',
-            'Мгновенная обработка',
-            'API доступ',
-            'Персональный менеджер'
-          ],
-          button: 'ВЫБРАТЬ'
-        }
-      ]
+      heroTitle: 'Undress Her',
+      heroSubtitle: 'Революционная технология искусственного интеллекта',
+      heroDescription: 'Создавайте потрясающие изображения с помощью передовых алгоритмов ИИ',
+      tryButton: 'ПОПРОБОВАТЬ СЕЙЧАС',
+      textBlockTitle: 'Почему выбирают нас?',
+      textBlockContent: 'Наша платформа использует самые современные технологии искусственного интеллекта для создания высококачественных изображений. Мы гарантируем полную конфиденциальность и безопасность ваших данных. Присоединяйтесь к тысячам довольных пользователей, которые уже оценили возможности нашего сервиса.'
     },
     en: {
-      title: 'OUR OFFERS',
-      subtitle: 'Choose the right plan',
-      plans: [
-        {
-          name: 'BASIC',
-          price: 'FREE',
-          features: [
-            '3 images per day',
-            'Standard quality',
-            'Basic processing',
-            'Ads'
-          ],
-          button: 'START'
-        },
-        {
-          name: 'PREMIUM',
-          price: '$9.99/mo',
-          features: [
-            'Unlimited images',
-            'HD quality',
-            'Fast processing',
-            'No ads',
-            'Priority support'
-          ],
-          button: 'CHOOSE',
-          popular: true
-        },
-        {
-          name: 'PRO',
-          price: '$19.99/mo',
-          features: [
-            'All Premium features',
-            '4K quality',
-            'Instant processing',
-            'API access',
-            'Personal manager'
-          ],
-          button: 'CHOOSE'
-        }
-      ]
+      heroTitle: 'Undress Her',
+      heroSubtitle: 'Revolutionary Artificial Intelligence Technology',
+      heroDescription: 'Create stunning images with advanced AI algorithms',
+      tryButton: 'TRY NOW',
+      textBlockTitle: 'Why choose us?',
+      textBlockContent: 'Our platform uses the most advanced artificial intelligence technologies to create high-quality images. We guarantee complete confidentiality and security of your data. Join thousands of satisfied users who have already appreciated the capabilities of our service.'
     }
   };
 
   const t = content[language];
 
   return (
-    <div className="offer-page" id="offers">
-      <div className="container">
-        <div className="offer-header">
-          <h1 className="offer-title neon-text">{t.title}</h1>
-          <p className="offer-subtitle">{t.subtitle}</p>
+    <div className="offer-page">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="container">
+          <div className="hero-content">
+            <h1 className="hero-title neon-text">{t.heroTitle}</h1>
+            <h2 className="hero-subtitle">{t.heroSubtitle}</h2>
+            <p className="hero-description">{t.heroDescription}</p>
+            <button className="neon-button hero-button">{t.tryButton}</button>
+          </div>
         </div>
-        
-        <div className="plans-grid">
-          {t.plans.map((plan, index) => (
-            <div key={index} className={`plan-card ${plan.popular ? 'popular' : ''}`}>
-              {plan.popular && <div className="popular-badge">ПОПУЛЯРНЫЙ</div>}
-              <h3 className="plan-name">{plan.name}</h3>
-              <div className="plan-price">{plan.price}</div>
-              <ul className="plan-features">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx}>{feature}</li>
-                ))}
-              </ul>
-              <button className="neon-button plan-button">{plan.button}</button>
-            </div>
-          ))}
+      </section>
+
+      {/* Before/After Slider */}
+      <section className="slider-section">
+        <div className="container">
+          <BeforeAfterSlider 
+            beforeImage={imgDressed}
+            afterImage={imgUndressed}
+          />
         </div>
-      </div>
+      </section>
+
+      {/* Text Block Section */}
+      <section className="text-block-section">
+        <div className="container">
+          <div className="text-block-content">
+            <h2 className="text-block-title">{t.textBlockTitle}</h2>
+            <p className="text-block-text">{t.textBlockContent}</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

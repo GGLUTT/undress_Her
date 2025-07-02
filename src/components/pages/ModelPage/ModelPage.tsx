@@ -246,12 +246,6 @@ const ModelPage: React.FC<ModelPageProps> = ({ language }) => {
       <div className="model-page">
         <div className="container">
           <div className="model-detail">
-            <div className="back-btn-container">
-              <button className="back-btn" onClick={handleBackClick}>
-                ← {t.backBtn}
-              </button>
-            </div>
-            
             <div className="model-detail-full-width">
               <div className="model-detail-main-content">
                 <div className="model-detail-image">
@@ -286,6 +280,12 @@ const ModelPage: React.FC<ModelPageProps> = ({ language }) => {
                 <h3>{t.description}</h3>
                 <p>{selectedModel.description}</p>
               </div>
+            </div>
+            
+            <div className="back-btn-container">
+              <button className="back-btn" onClick={handleBackClick}>
+                ← {t.backBtn}
+              </button>
             </div>
           </div>
         </div>
