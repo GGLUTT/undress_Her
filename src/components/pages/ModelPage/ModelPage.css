@@ -139,7 +139,7 @@
 }
 
 .view-btn {
-      background: linear-gradient(45deg, var(--neon-pink), #ff0050);
+  background: linear-gradient(45deg, var(--neon-pink), #ff0050);
   border: none;
   color: white;
   padding: 8px 16px;
@@ -204,59 +204,60 @@
   color: var(--text-secondary);
 }
 
-.table-row:hover {
+.models-table tr:hover {
   background: var(--accent-bg);
 }
 
-.table-image {
+.models-table tr:last-child td {
+  border-bottom: none;
+}
+
+.table-model-image {
   width: 60px;
   height: 80px;
   border-radius: 8px;
-  overflow: hidden;
-}
-
-.table-image img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
-.model-name-cell {
-  font-weight: bold;
+.table-model-name {
   color: var(--text-primary);
+  font-weight: bold;
+}
+
+.table-model-views {
+  color: var(--text-muted);
 }
 
 .table-view-btn {
-  background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
   border: none;
   color: white;
-  padding: 8px 16px;
-  border-radius: 15px;
+  padding: 6px 12px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .table-view-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px var(--neon-pink);
+  box-shadow: 0 0 10px var(--neon-purple);
 }
 
-/* Model Detail Styles */
+/* Стилі для детального перегляду моделі */
 .model-detail {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .back-btn-container {
-  display: flex;
-  justify-content: flex-end;
   margin-bottom: 30px;
+  text-align: right;
 }
 
 .back-btn {
-      background: linear-gradient(45deg, var(--neon-pink), #ff0050);
+  background: linear-gradient(45deg, var(--neon-pink), #ff0050);
   border: none;
   color: white;
   padding: 12px 24px;
@@ -264,8 +265,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: bold;
-  margin-bottom: 40px;
-  margin-left: auto;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -294,18 +293,93 @@
 .model-detail-full-width {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 30px;
 }
 
 .model-detail-main-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
   align-items: start;
+  min-height: 600px;
+}
+
+.model-detail-image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  height: fit-content;
+  max-height: 600px;
+}
+
+.model-detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.model-detail-info {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.model-detail-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.2;
+  width: 100%;
+}
+
+.model-detail-table {
+  background: var(--secondary-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+}
+
+.model-detail-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.model-detail-table td {
+  padding: 20px 25px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.05rem;
+  vertical-align: middle;
+}
+
+.model-detail-table tr:last-child td {
+  border-bottom: none;
+}
+
+.table-label {
+  font-weight: bold;
+  color: var(--text-primary);
+  width: 45%;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.table-value {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: right;
 }
 
 .model-detail-description-full {
-  grid-column: 1 / -1;
   background: var(--secondary-bg);
   padding: 30px;
   border-radius: 15px;
@@ -329,85 +403,6 @@
   margin: 0 auto;
 }
 
-.model-detail-image {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.model-detail-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.model-detail-info {
-  padding: 20px 0;
-}
-
-.model-detail-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: var(--text-primary);
-  text-align: center;
-}
-
-.model-detail-table {
-  background: var(--secondary-bg);
-  border-radius: 15px;
-  overflow: hidden;
-  margin-bottom: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  min-height: 300px; 
-}
-
-.model-detail-table table {
-  width: 100%;
-  border-collapse: collapse;
-  height: 100%; 
-}
-
-.model-detail-table td {
-  padding: 25px 30px; 
-  border-bottom: 1px solid var(--border-color);
-  font-size: 1.1rem; 
-  vertical-align: middle; 
-}
-
-.model-detail-table tr:last-child td {
-  border-bottom: none;
-}
-
-.table-label {
-  font-weight: bold;
-  color: var(--text-primary);
-  width: 40%;
-  font-size: 1.2rem; 
-}
-
-.table-value {
-  color: var(--text-secondary);
-  font-size: 1.15rem; 
-  font-weight: 500;
-}
-
-.model-detail-info {
-  padding: 50px 0; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  min-height: 500px; 
-}
-
-.model-detail-title {
-  font-size: 2.8rem; 
-  font-weight: bold;
-  margin-bottom: 40px; 
-  color: var(--text-primary);
-  text-align: center;
-}
-
 .model-description {
   background: var(--secondary-bg);
   padding: 25px;
@@ -427,7 +422,28 @@
   font-size: 1.1rem;
 }
 
+/* Планшетна адаптація */
+@media (max-width: 1024px) {
+  .model-detail-main-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .model-detail-image {
+    max-height: 500px;
+  }
+  
+  .model-detail-title {
+    font-size: 2rem;
+  }
+}
+
+/* Мобільна адаптація */
 @media (max-width: 768px) {
+  .model-page {
+    padding: 100px 0 40px;
+  }
+  
   .model-title {
     font-size: 2rem;
   }
@@ -460,84 +476,212 @@
     min-width: 600px;
   }
   
-  .model-detail-content {
+  /* Детальний перегляд на планшетах */
+  .model-detail {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .back-btn-container {
+    order: 2;
+    margin-top: 30px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  
+  .model-detail-full-width {
+    order: 1;
+    gap: 20px;
+  }
+  
+  .model-detail-main-content {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .model-detail-image {
+    max-height: 400px;
+    margin: 0 auto;
+    max-width: 350px;
+  }
+  
+  .model-detail-info {
+    padding: 20px 0;
+    min-height: auto;
+    align-items: center;
   }
   
   .model-detail-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .model-detail-table {
+    max-width: 100%;
+    min-height: auto;
+  }
+  
+  .model-detail-table td {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+  
+  .table-label {
+    font-size: 1rem;
+    width: 50%;
+  }
+  
+  .table-value {
+    font-size: 1rem;
   }
   
   .model-detail-description-full {
     margin-top: 20px;
     padding: 20px;
+    text-align: center;
   }
   
   .model-detail-description-full h3 {
     font-size: 1.3rem;
+    margin-bottom: 15px;
   }
   
   .model-detail-description-full p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .back-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px 30px;
     font-size: 1.1rem;
+    margin: 0 auto;
+    display: block;
   }
 }
 
+/* Мобільна адаптація для маленьких екранів */
 @media (max-width: 480px) {
+  .model-page {
+    padding: 80px 0 30px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
   .models-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .model-card {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .model-detail-image {
+    max-height: 300px;
+    max-width: 280px;
   }
   
   .model-detail-title {
     font-size: 1.5rem;
-  }
-  
-  .model-detail-table {
-    min-height: 250px;
+    margin-bottom: 15px;
   }
   
   .model-detail-table td {
-    padding: 20px 25px;
-    font-size: 1rem;
+    padding: 12px 15px;
+    font-size: 0.9rem;
   }
   
   .table-label {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   
   .table-value {
-    font-size: 1.05rem;
+    font-size: 0.9rem;
   }
   
-  .model-detail-info {
-    padding: 20px 0;
-    min-height: 400px;
+  .model-detail-description-full {
+    padding: 15px;
   }
   
-  .model-detail-title {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
+  .model-detail-description-full h3 {
+    font-size: 1.2rem;
+  }
+  
+  .model-detail-description-full p {
+    font-size: 0.9rem;
+  }
+  
+  .back-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  
+  .model-detail-full-width {
+    gap: 15px;
+  }
+  
+  .back-btn-container {
+    margin-top: 25px;
+    padding: 0 20px;
+  }
+  
+  .category-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .view-mode-btn {
+    padding: 6px 15px;
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 480px) {
-  .models-grid {
-    grid-template-columns: 1fr;
+/* Адаптація для дуже маленьких екранів */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .model-detail-image {
+    max-width: 250px;
+    max-height: 280px;
   }
   
   .model-detail-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
-  .model-detail-table {
-    min-height: 200px;
+  .model-card {
+    max-width: 280px;
   }
   
-  .model-detail-table td {
-    padding: 15px 20px;
+  .category-btn {
+    padding: 6px 15px;
+    font-size: 0.8rem;
   }
   
-  .model-detail-info {
-    min-height: 350px;
+  .back-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Адаптація для великих екранів */
+@media (min-width: 1400px) {
+  .models-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: 1400px;
+  }
+  
+  .model-detail-main-content {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
